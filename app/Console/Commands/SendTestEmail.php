@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\TestMail;
 
 class SendTestEmail extends Command
 {
@@ -20,20 +19,21 @@ class SendTestEmail extends Command
      *
      * @var string
      */
-    protected $description = 'Send a test email to the specified email address';
+    protected $description = 'Send a test email to the specified address';
 
     /**
      * Execute the console command.
-     *
-     * @return void
      */
     public function handle()
     {
         $email = $this->argument('email');
 
-        // Send the email using the Mailable class
-        Mail::to($email)->send(new TestMail());
+        // Logic to send the email
+        Mail::raw('This is a test email from EventHub API.', function ($message) use ($email) {
+            $message->to($email)
+                ->subject('Test Email');
+        });
 
-        $this->info("Test email sent to {$email}");
+        $this->info("Test email sent to: {$email}");
     }
 }

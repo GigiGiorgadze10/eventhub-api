@@ -12,6 +12,24 @@ use App\Http\Controllers\TicketController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\AttendeeController;
 use App\Http\Controllers\EventSearchController;
+use Illuminate\Support\Facades\Artisan;
+
+Route::post('/send-test-email', function (Request $request) {
+    $request->validate([
+        'email' => 'required|email',
+    ]);
+
+    $email = $request->input('email');
+
+    Artisan::call('send:test-email', [
+        'email' => $email,
+    ]);
+
+    return response()->json([
+        'message' => "Test email sent to: {$email}",
+    ]);
+});
+
 
 // Public Routes
 Route::get('/test', function () {
