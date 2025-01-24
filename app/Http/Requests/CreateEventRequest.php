@@ -14,7 +14,6 @@ class CreateEventRequest extends FormRequest
      */
     public function authorize()
     {
-        // You can add authorization logic here, return true for now
         return true;
     }
 
@@ -26,28 +25,21 @@ class CreateEventRequest extends FormRequest
     public function rules()
     {
         return [
-            // Event name: required, unique in the events table
             'name' => 'required|string|max:255|unique:events,name',
 
-            // Event date: required, must be a valid date, and cannot be in the past
             'date' => 'required|date|after_or_equal:today',
 
-            // Event location: required string
             'location' => 'required|string|max:255',
 
-            // Event description: optional, but if provided, it should be a string
             'description' => 'nullable|string|max:1000',
 
-            // Tags (array validation)
             'tags' => 'nullable|array',
-            'tags.*' => 'string|max:255', // Each tag in the array should be a string
+            'tags.*' => 'string|max:255', 
 
-            // Nested array validation for speakers
             'speakers' => 'nullable|array',
-            'speakers.*.name' => 'required|string|max:255',  // Speaker name
-            'speakers.*.bio' => 'nullable|string|max:500',   // Speaker bio
+            'speakers.*.name' => 'required|string|max:255', 
+            'speakers.*.bio' => 'nullable|string|max:500',  
 
-            // Event ticket price: optional, must be numeric if provided
             'ticket_price' => 'nullable|numeric|min:0',
         ];
     }
@@ -84,8 +76,6 @@ class CreateEventRequest extends FormRequest
      */
     protected function prepareForValidation()
     {
-        // You can manipulate or sanitize input before validation
-        // Example: Convert ticket price to float
         if ($this->has('ticket_price')) {
             $this->merge([
                 'ticket_price' => (float) $this->ticket_price,

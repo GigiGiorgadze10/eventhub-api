@@ -13,7 +13,7 @@ class TicketFactory extends Factory
     public function definition()
     {
         return [
-            'event_id' => Event::factory(),  // Generates a related event automatically
+            'event_id' => Event::factory(), 
             'ticket_type' => $this->faker->randomElement(['General Admission', 'VIP', 'Standard', 'Premium']),
             'price' => $this->faker->randomFloat(2, 20, 200),
         ];

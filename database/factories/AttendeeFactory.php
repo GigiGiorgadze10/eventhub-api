@@ -14,8 +14,8 @@ class AttendeeFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory(),  // Automatically creates a user
-            'event_id' => Event::factory(),  // Automatically creates an event
+            'user_id' => User::factory(),  
+            'event_id' => Event::factory(),  
         ];
     }
 }

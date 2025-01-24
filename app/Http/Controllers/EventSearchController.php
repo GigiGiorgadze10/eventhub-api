@@ -11,17 +11,14 @@ class EventSearchController extends Controller
     {
         $query = Event::query();
 
-        // Filter by name if provided
         if ($request->has('name')) {
             $query->where('name', 'like', '%' . $request->get('name') . '%');
         }
 
-        // Filter by location if provided
         if ($request->has('location')) {
             $query->where('location', 'like', '%' . $request->get('location') . '%');
         }
 
-        // Filter by date range if provided
         if ($request->has('start_date') && $request->has('end_date')) {
             $query->whereBetween('date', [
                 $request->get('start_date'),
@@ -29,7 +26,6 @@ class EventSearchController extends Controller
             ]);
         }
 
-        // Get the events
         $events = $query->get();
 
         return response()->json($events);

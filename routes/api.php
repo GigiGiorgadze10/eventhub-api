@@ -46,8 +46,8 @@ Route::post('/forgot-password', [PasswordResetLinkController::class, 'store']);
 
 // Public Event Routes
 Route::prefix('events')->group(function () {
-    Route::get('/', [EventController::class, 'index']); // List all events
-    Route::get('/{event}', [EventController::class, 'show']); // Show single event details
+    Route::get('/', [EventController::class, 'index']); 
+    Route::get('/{event}', [EventController::class, 'show']); 
 });
 
 // Authenticated Routes
@@ -60,15 +60,15 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Attendee Routes
     Route::prefix('events/{event}')->group(function () {
-        Route::post('/attend', [AttendeeController::class, 'store']); // Register as attendee
-        Route::delete('/attend', [AttendeeController::class, 'destroy']); // Remove attendee
+        Route::post('/attend', [AttendeeController::class, 'store']); 
+        Route::delete('/attend', [AttendeeController::class, 'destroy']); 
 
         // Ticket Routes
-        Route::post('/tickets', [TicketController::class, 'store']); // Book a ticket
-        Route::get('/tickets', [TicketController::class, 'index']); // View tickets for an event
+        Route::post('/tickets', [TicketController::class, 'store']); 
+        Route::get('/tickets', [TicketController::class, 'index']); 
 
         // Review Routes
-        Route::post('/reviews', [ReviewController::class, 'store']); // Create a review
-        Route::get('/reviews', [ReviewController::class, 'index']); // View all reviews for an event
+        Route::post('/reviews', [ReviewController::class, 'store']); 
+        Route::get('/reviews', [ReviewController::class, 'index']); 
     });
 });

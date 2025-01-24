@@ -9,7 +9,6 @@ class TicketSeeder extends Seeder
 {
     public function run()
     {
-        // Create tickets for the events
         Ticket::factory(20)->create();
     }
 }

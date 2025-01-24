@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
-    // Create a review for an event
     public function store(Request $request, Event $event)
     {
         $review = new Review();
@@ -21,7 +20,6 @@ class ReviewController extends Controller
         return response()->json($review, 201);
     }
 
-    // View all reviews for an event
     public function index(Event $event)
     {
         return $event->reviews;

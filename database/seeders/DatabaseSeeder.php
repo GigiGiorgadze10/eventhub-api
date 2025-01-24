@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
             EventSeeder::class,
             TicketSeeder::class,
             ReviewSeeder::class,
-            AttendeeSeeder::class,  // Add this line
+            AttendeeSeeder::class,  
         ]);
     }
 }

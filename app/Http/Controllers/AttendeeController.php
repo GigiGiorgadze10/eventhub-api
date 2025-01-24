@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class AttendeeController extends Controller
 {
-    // Register user as attendee for an event
     public function store(Request $request, Event $event)
     {
         $attendee = new Attendee();
@@ -19,7 +18,6 @@ class AttendeeController extends Controller
         return response()->json($attendee, 201);
     }
 
-    // Remove user as attendee for an event
     public function destroy(Request $request, Event $event)
     {
         $attendee = Attendee::where('user_id', auth()->id())
