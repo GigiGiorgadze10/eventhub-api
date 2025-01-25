@@ -43,7 +43,7 @@ EventHub API is a Laravel-based application for managing events, attendees, tick
 ### Steps
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/EventHub-API.git
+   git clone https://github.com/GigiGiorgadze10/eventhub-api
    ```
 2. Navigate to the project directory:
    ```bash
